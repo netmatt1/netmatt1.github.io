@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Import ZeroMD Version 3 -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3?register"></script>
+    <title>Markdown Website</title>
+</head>
+<body>
+    <div style="width:70%; margin:0 auto;" id="mdcontainer"></div>
+
+    <script>
+        // Function to extract query parameters
+        function getQuery(key) {
+            const query = new URLSearchParams(window.location.search);
+            return query.get(key) || "";
+        }
+
+        // Dynamically create and append <zero-md> on page load
+        window.onload = function () {
+            const md = document.createElement("zero-md");
+            const src = getQuery("src") || "home.md"; // Default to home.md if no src is provided
+
+            md.setAttribute("src", src);
+            md.setAttribute("no-shadow", "");
+            document.getElementById("mdcontainer").append(md);
+        };
+    </script>
+</body>
+</html>
